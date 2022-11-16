@@ -39,13 +39,17 @@ export default async function handler(req, res) {
         paid: 0
     })
 
-    const session = await stripe.checkout.sessions.create({
-        line_items: line_items,
-        mode: 'payment',
-        success_url: `${req.headers.origin}/?success=true`,
-        cancel_url: `${req.headers.origin}/?canceled=true`,
-        metadata: {orderId: order._id.toString()}
-      });
-      res.redirect(303, session.url)
-    res.json(req.method)
+    try {
+        const session = await stripe.checkout.sessions.create({
+            line_items: line_items,
+            mode: 'payment',
+            success_url: `${req.headers.origin}/?success=true`,
+            cancel_url: `${req.headers.origin}/?canceled=true`,
+            metadata: {orderId: order._id.toString()}
+          });
+          return res.redirect(303, session.url)
+    } catch(e) {
+        return res.status(err.statusCode || 500).json(err.message);
+    }
+    // res.json(req.method)
 }

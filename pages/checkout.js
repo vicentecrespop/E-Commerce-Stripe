@@ -1,6 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import { ProductsContext } from "../components/ProductsContext";
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe(
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+)
 
 export default function CheckoutPage() {
     const {selectedProducts, setSelectedProducts} = useContext(ProductsContext)
