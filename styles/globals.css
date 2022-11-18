@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Booter - Zero Zero";
+  src: url("../public/fonts/Booter - Zero Zero.woff") format("woff"),
+       url("../public/fonts/Booter - Zero Zero.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,
 body {
   padding: 0;
@@ -17,6 +25,10 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.font-booter {
+  font-family: "Booter - Zero Zero";
 }
 
 @media (prefers-color-scheme: dark) {

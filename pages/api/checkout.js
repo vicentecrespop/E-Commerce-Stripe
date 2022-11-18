@@ -51,5 +51,4 @@ export default async function handler(req, res) {
     } catch(e) {
         return res.status(err.statusCode || 500).json(err.message);
     }
-    // res.json(req.method)
 }

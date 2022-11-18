@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import { ProductsContext } from "../components/ProductsContext";
 import { loadStripe } from '@stripe/stripe-js';
+import Header from "../components/Header";
 
 const stripePromise = loadStripe(
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
@@ -47,9 +48,15 @@ export default function CheckoutPage() {
 
     return (
         <Layout>
+            <Header />
+            <div className="flex flex-col bg-white relative">
+                <h2 className="text-center font-booter text-6xl mt-8 mb-8">Carrinho</h2>
+            <div className="flex justify-between p-5 relative bg-white min-h-[65vh]">
             {!productsInfo.length && (
                 <div>No products in your shopping cart</div>
             )}
+            <div>
+
             {productsInfo.length && productsInfo.map(productInfo => {
                 const amount = selectedProducts.filter(id => id === productInfo._id)
                 if (amount === 0) return;
@@ -75,6 +82,7 @@ export default function CheckoutPage() {
                     </div>
                 )
             })}
+            </div>
             <form action="/api/checkout" method="POST">
                 <div className="mt-4">
                     <input name="name" value={name} onChange={(e) => setName(e.target.value)} className="bg-gray-100 w-full rounded-lg px-4 py-2 mb-2" type="text" placeholder="Nome Completo"/>
@@ -88,7 +96,7 @@ export default function CheckoutPage() {
                         <h3 className="font-bold">R${subtotal.toFixed(2)}</h3>
                     </div>
                     <div className="flex my-3">
-                        <h3 className="grow font-bold text-gray-400">Delivery: </h3>
+                        <h3 className="grow font-bold text-gray-400">Entrega: </h3>
                         <h3 className="font-bold">R${deliveryPrice}</h3>
                     </div>
                     <div className="flex my-3 border-t-2 pt-3 border-dashed border-emerald-500">
@@ -99,6 +107,8 @@ export default function CheckoutPage() {
                 <input type="hidden" name="products" value={selectedProducts.join(',')} />
                 <button type="submit" className="bg-emerald-500 px-5 py-2 roundedd-xl font-bold text-white w-full my-4 shadow-emerald-300 shadow-lg">Pagar R${total.toFixed(2)}</button>
             </form>
+            </div> 
+            </div>
         </Layout>
     )
 }
