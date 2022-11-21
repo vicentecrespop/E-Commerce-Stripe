@@ -9,6 +9,9 @@ export default function Layout({children}) {
         if(window.location.href.includes('success')) {
             setSelectedProducts([])
             setSuccess(true)
+            setTimeout(() => {
+                setSuccess(false)
+            }, 4000)
         }
     }, [])
 
@@ -16,8 +19,8 @@ export default function Layout({children}) {
         <div className="border border-black min-h-screen flex flex-col">
             <div className="grow flex flex-col">
                 {success && (
-                    <div className="mb-5 bg-green-400 text-white text-lg p-5 rounded-xl">
-                        Thanks for your order!
+                    <div className="relative z-50 text-center bg-green-400 text-white text-lg p-5">
+                        Obrigado pela compra! :)
                     </div>
                 )}
                 {children}
