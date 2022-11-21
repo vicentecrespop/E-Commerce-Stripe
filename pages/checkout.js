@@ -52,12 +52,12 @@ export default function CheckoutPage() {
             <div className="flex flex-col bg-white relative">
                 <h2 className="text-center font-booter text-6xl mt-8 mb-8">Carrinho</h2>
             <div className="flex justify-between p-5 relative bg-white min-h-[65vh]">
-            {!productsInfo.length && (
-                <div>No products in your shopping cart</div>
+            {!selectedProducts.length && (
+                <div>Carrinho Vazio. Itens no carrinho:</div>
             )}
             <div>
 
-            {productsInfo.length && productsInfo.map(productInfo => {
+            {selectedProducts.length && productsInfo.map(productInfo => {
                 const amount = selectedProducts.filter(id => id === productInfo._id)
                 if (amount === 0) return;
                 return (
