@@ -4,6 +4,8 @@ import { ProductsContext } from "../components/ProductsContext";
 import { loadStripe } from '@stripe/stripe-js';
 import Header from "../components/Header";
 
+import FontBooter from "../components/Font";
+
 const stripePromise = loadStripe(
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 )
@@ -50,7 +52,7 @@ export default function CheckoutPage() {
         <Layout>
             <Header />
             <div className="flex flex-col bg-white relative">
-                <h2 className="text-center font-booter text-6xl mt-8 mb-8">Carrinho</h2>
+                <h2 className={`text-center text-6xl mt-8 mb-8 ${FontBooter}`}>Carrinho</h2>
             <div className="flex justify-between p-5 relative bg-white min-h-[65vh]">
             {!selectedProducts.length && (
                 <div>Carrinho Vazio. Itens no carrinho:</div>

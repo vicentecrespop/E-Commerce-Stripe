@@ -5,6 +5,8 @@ import { initMongoose } from "../lib/mongoose"
 import Layout from "../components/Layout"
 import Header from "../components/Header"
 
+import FontBooter from "../components/Font"
+
 export default function Home({products}) {
   const [search, setSearch] = useState('')
 
@@ -24,7 +26,7 @@ export default function Home({products}) {
             <div key={categoryName}>
               {products.find(p => p.category === categoryName) && (
                 <div>
-                  <h2 className="text-5xl py-5 capitalize font-booter">{categoryName}</h2>
+                  <h2 className={`text-5xl py-5 capitalize ${FontBooter}`}>{categoryName}</h2>
                   <div className="flex -mx-5 overflow-x-scroll snap-x scrollbar-hide">
                     {products.filter(p => p.category === categoryName).map(productInfo => (
                       <div key={productInfo._id} className="px-5 snap-start">

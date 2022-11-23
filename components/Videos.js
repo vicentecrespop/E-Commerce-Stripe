@@ -1,7 +1,9 @@
+import FontBooter from "./Font"
+
 export default function Videos() {
     return (
         <div className="h-full w-full bg-white relative pt-8">
-            <h2 className="text-center text-8xl text-[#333] font-booter">Videos</h2>
+            <h2 className={`text-center text-8xl text-[#333] ${FontBooter}`}>Videos</h2>
             <div className="flex flex-col items-center mt-12">
                 <div className="border border-transparent border-b-black pb-4 mb-4 uppercase text-[#555] font-extralight text-lg flex jusity-between w-2/3">
                     <span className="inline-block pr-2 w-1/6 font-bold">Oct 6 2022</span>
