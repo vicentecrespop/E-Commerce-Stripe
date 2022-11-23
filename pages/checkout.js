@@ -55,10 +55,10 @@ export default function CheckoutPage() {
                 <h2 className={`text-center text-6xl mt-8 mb-8 ${FontBooter}`}>Carrinho</h2>
             <div className="flex justify-between p-5 relative bg-white min-h-[65vh]">
             {!selectedProducts.length && (
-                <div>Carrinho Vazio. Itens no carrinho:</div>
+                <div className={`${FontBooter} text-4xl`}>Carrinho Vazio. Adicione itens ao seu carrinho.</div>
             )}
             <div>
-
+            <div className={selectedProducts.length ? '' : 'hidden'}>
             {selectedProducts.length && productsInfo.map(productInfo => {
                 const amount = selectedProducts.filter(id => id === productInfo._id)
                 if (amount === 0) return;
@@ -84,6 +84,7 @@ export default function CheckoutPage() {
                     </div>
                 )
             })}
+            </div>
             </div>
             <form action="/api/checkout" method="POST">
                 <div className="mt-4">
