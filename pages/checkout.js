@@ -53,11 +53,11 @@ export default function CheckoutPage() {
             <Header />
             <div className="flex flex-col bg-white relative">
                 <h2 className={`text-center text-6xl mt-8 mb-8 ${FontBooter}`}>Carrinho</h2>
-            <div className="flex justify-between p-5 relative bg-white min-h-[65vh]">
+            <div className="flex flex-col md:flex-row justify-between p-5 relative bg-white min-h-[65vh]">
             {!selectedProducts.length && (
                 <div className={`${FontBooter} text-4xl`}>Carrinho Vazio. Adicione itens ao seu carrinho.</div>
             )}
-            <div>
+            <div className="md:w-1/2">
             <div className={selectedProducts.length ? '' : 'hidden'}>
             {selectedProducts.length && productsInfo.map(productInfo => {
                 const amount = selectedProducts.filter(id => id === productInfo._id)
@@ -86,7 +86,7 @@ export default function CheckoutPage() {
             })}
             </div>
             </div>
-            <form action="/api/checkout" method="POST">
+            <form action="/api/checkout" method="POST" className="md:w-1/2">
                 <div className="mt-4">
                     <input name="name" value={name} onChange={(e) => setName(e.target.value)} className="bg-gray-100 w-full rounded-lg px-4 py-2 mb-2" type="text" placeholder="Nome Completo"/>
                     <input name="address" value={address} onChange={(e) => setAddress(e.target.value)} className="bg-gray-100 w-full rounded-lg px-4 py-2 mb-2" type="text" placeholder="Endereço" />
